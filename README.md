@@ -1,5 +1,7 @@
 # 🧾 Gerador de Certificados Personalizados
 
+<img width="1200" height="630" alt="image" src="https://github.com/user-attachments/assets/ab9a624d-fdf1-43a9-8543-9d118edf2acc" />
+
 Este é um projeto **frontend em React + Next.js** que permite gerar certificados personalizados, tanto individuais quanto em lote. Ele se conecta a uma **API REST** para processar e baixar os certificados em imagem PNG ou ZIP.
 
 Você pode configurar o modelo, adicionar um texto personalizado, órgão emissor e até incluir uma assinatura com remoção automática de fundo.
