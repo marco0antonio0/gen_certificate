@@ -29,13 +29,52 @@ export default function SignatureUpload({ onSignatureUpload }: SignatureUploadPr
 
     const reader = new FileReader()
     reader.onload = (e) => {
-      const base64 = e.target?.result as string
-      setSignature(base64)
-      setOriginalSignature(base64)
-      onSignatureUpload(base64)
+      const img = new window.Image()
+      img.onload = () => {
+        const canvas = document.createElement("canvas")
+        const ctx = canvas.getContext("2d")
+        if (!ctx) {
+          alert("Erro ao processar imagem.")
+          return
+        }
+
+        // Defina um tamanho máximo para a imagem
+        const MAX_WIDTH = 600
+        const MAX_HEIGHT = 200
+        let width = img.width
+        let height = img.height
+
+        // Redimensiona proporcionalmente
+        if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+          const widthRatio = MAX_WIDTH / width
+          const heightRatio = MAX_HEIGHT / height
+          const ratio = Math.min(widthRatio, heightRatio)
+          width = width * ratio
+          height = height * ratio
+        }
+
+        canvas.width = width
+        canvas.height = height
+        ctx.drawImage(img, 0, 0, width, height)
+
+        // Salvar como JPEG para reduzir tamanho. Qualidade pode ser ajustada (0.7 = 70%)
+        const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7)
+
+        setSignature(compressedBase64)
+        setOriginalSignature(compressedBase64)
+        onSignatureUpload(compressedBase64)
+      }
+
+      img.onerror = () => {
+        alert("Erro ao carregar a imagem.")
+      }
+
+      img.src = e.target?.result as string
     }
+
     reader.readAsDataURL(file)
   }
+
 
   const removeBackground = async () => {
   if (!originalSignature) return

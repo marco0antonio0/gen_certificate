@@ -266,7 +266,7 @@ export default function CertificateGenerator() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="gap-8">
           {/* Formulário */}
           <div className="space-y-6">
             <Card>
@@ -422,9 +422,9 @@ export default function CertificateGenerator() {
           </div>
 
           {/* Preview */}
-          <div>
+          {/* <div>
             <CertificatePreview previewUrl={previewUrl} />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
