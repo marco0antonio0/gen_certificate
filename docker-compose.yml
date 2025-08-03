@@ -1,18 +1,18 @@
 version: "3.8"
 
 services:
-  gereadordecertificado:
+  gereadordecertificadoweb:
     build: .
-    container_name: gereadordecertificado
+    container_name: gereadordecertificadoweb
     expose:
       - "3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.gereadordecertificado.rule=Host(`certificado.opengena.com`)"
-      - "traefik.http.routers.gereadordecertificado.entrypoints=websecure"
-      - "traefik.http.routers.gereadordecertificado.tls=true"
-      - "traefik.http.routers.gereadordecertificado.tls.certresolver=letsEncrypt"
-      - "traefik.http.services.gereadordecertificado.loadbalancer.server.port=3000"
+      - "traefik.http.routers.gereadordecertificadoweb.rule=Host(`certificado.opengena.com`)"
+      - "traefik.http.routers.gereadordecertificadoweb.entrypoints=websecure"
+      - "traefik.http.routers.gereadordecertificadoweb.tls=true"
+      - "traefik.http.routers.gereadordecertificadoweb.tls.certresolver=letsEncrypt"
+      - "traefik.http.services.gereadordecertificadoweb.loadbalancer.server.port=3000"
     networks:
       - proxy
     volumes:

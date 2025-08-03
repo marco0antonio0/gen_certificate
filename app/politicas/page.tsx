@@ -158,7 +158,7 @@ export default function PoliticasPage() {
                   legais. Recomendamos revisar esta página ocasionalmente.
                 </p>
                 <p className="text-sm text-gray-500">
-                  <strong>Última atualização:</strong> Janeiro de 2024
+                  <strong>Última atualização:</strong> agosto de 2025
                 </p>
               </CardContent>
             </Card>
